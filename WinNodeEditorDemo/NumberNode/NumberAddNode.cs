@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace WinNodeEditorDemo.NumberNode
 {
-    [STNode("/Number/", "Crystal_lz", "2212233137@qq.com", "www.st233.com", "This node can get two numbers add result")]
+    [STNode("/Number/", "Crystal_lz", "wx:zhy_cxx", "https://tuling.online", "This node can get two numbers add result")]
     public class NumberAddNode : NumberNode
     {
         private STNodeOption m_in_num1;

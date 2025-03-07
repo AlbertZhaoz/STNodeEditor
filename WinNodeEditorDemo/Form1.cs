@@ -11,13 +11,24 @@ using ST.Library.UI.NodeEditor;
 
 namespace WinNodeEditorDemo
 {
+    /// <summary>
+    /// 主窗体类，用于展示和管理节点编辑器界面
+    /// </summary>
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// 窗体构造函数，初始化组件并设置窗体位置
+        /// </summary>
         public Form1() {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        /// <summary>
+        /// 窗体加载时的初始化配置
+        /// 包括：节点属性网格配置、节点树视图加载、节点编辑器事件绑定等
+        /// </summary>
+        /// <param name="e">事件参数</param>
         protected override void OnLoad(EventArgs e) {
             base.OnLoad(e);
             stNodePropertyGrid1.Text = "Node_Property";
@@ -39,6 +50,12 @@ namespace WinNodeEditorDemo
             contextMenuStrip1.Renderer = new ToolStripRendererEx();
         }
 
+        /// <summary>
+        /// 窗体加载事件处理方法
+        /// 当前包含一些被注释的测试代码，用于调整窗体大小和布局
+        /// </summary>
+        /// <param name="sender">事件源</param>
+        /// <param name="e">事件参数</param>
         private void Form1_Load(object sender, EventArgs e) {
             //int nLines = 0;
             //foreach (var v in Directory.GetFiles("../../../", "*.cs", SearchOption.AllDirectories)) {
@@ -56,6 +73,12 @@ namespace WinNodeEditorDemo
             //}));
         }
 
+        /// <summary>
+        /// 打开按钮点击事件处理
+        /// 用于打开并加载已保存的节点编辑器画布文件(.stn)
+        /// </summary>
+        /// <param name="sender">事件源</param>
+        /// <param name="e">事件参数</param>
         private void btn_open_Click(object sender, EventArgs e) {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "*.stn|*.stn";
@@ -64,6 +87,12 @@ namespace WinNodeEditorDemo
             stNodeEditor1.LoadCanvas(ofd.FileName);
         }
 
+        /// <summary>
+        /// 保存按钮点击事件处理
+        /// 用于将当前节点编辑器画布保存为文件(.stn)
+        /// </summary>
+        /// <param name="sender">事件源</param>
+        /// <param name="e">事件参数</param>
         private void btn_save_Click(object sender, EventArgs e) {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "*.stn|*.stn";
@@ -71,15 +100,33 @@ namespace WinNodeEditorDemo
             stNodeEditor1.SaveCanvas(sfd.FileName);
         }
 
+        /// <summary>
+        /// 锁定连接菜单项点击事件处理
+        /// 用于切换当前选中节点的连接锁定状态
+        /// </summary>
+        /// <param name="sender">事件源</param>
+        /// <param name="e">事件参数</param>
         private void lockConnectionToolStripMenuItem_Click(object sender, EventArgs e) {
             stNodeEditor1.ActiveNode.LockOption = !stNodeEditor1.ActiveNode.LockOption;
         }
 
+        /// <summary>
+        /// 锁定位置菜单项点击事件处理
+        /// 用于切换当前选中节点的位置锁定状态
+        /// </summary>
+        /// <param name="sender">事件源</param>
+        /// <param name="e">事件参数</param>
         private void lockLocationToolStripMenuItem_Click(object sender, EventArgs e) {
             if (stNodeEditor1.ActiveNode == null) return;
             stNodeEditor1.ActiveNode.LockLocation = !stNodeEditor1.ActiveNode.LockLocation;
         }
 
+        /// <summary>
+        /// 删除菜单项点击事件处理
+        /// 用于从节点编辑器中移除当前选中的节点
+        /// </summary>
+        /// <param name="sender">事件源</param>
+        /// <param name="e">事件参数</param>
         private void removeToolStripMenuItem_Click(object sender, EventArgs e) {
             if (stNodeEditor1.ActiveNode == null) return;
             stNodeEditor1.Nodes.Remove(stNodeEditor1.ActiveNode);

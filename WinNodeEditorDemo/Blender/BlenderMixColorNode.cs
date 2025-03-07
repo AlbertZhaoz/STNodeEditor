@@ -11,7 +11,7 @@ namespace WinNodeEditorDemo.Blender
     /// <summary>
     /// 此类仅仅是演示 并不包含颜色混合功能
     /// </summary>
-    [STNode("/Blender/", "Crystal_lz", "2212233137@qq.com", "st233.com", "this is blender mixrgb node")]
+    [STNode("/Blender/", "Crystal_lz", "wx:zhy_cxx", "st233.com", "this is blender mixrgb node")]
     public class BlenderMixColorNode : STNode
     {
         private ColorMixType _MixType;
